@@ -3,17 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - explo
+  - hrt
+  - bln
+  - gate
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Bomb
   - Water
   - UI
-  - 
-  - 
-  - 
+  - stage
+  - Bricks
+  - User Interface
   - 
   - 
   - 
