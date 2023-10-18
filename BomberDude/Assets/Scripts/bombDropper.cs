@@ -15,10 +15,12 @@ public class bombDropper : MonoBehaviour
 
     GameObject countText;
     private bombCounter count;
+    public GameObject bmbS;
    
    void Start(){
        countText = GameObject.Find("Bombs");
        count = countText.GetComponent<bombCounter>();
+       bmbS = GameObject.Find("BombSound");
     }
 
     private void OnEnable(){
@@ -43,6 +45,7 @@ public class bombDropper : MonoBehaviour
         position.y -= .2f;
 
         GameObject explo = Instantiate(exploPre, position, Quaternion.identity);
+        bmbS.GetComponent<AudioSource>().Play();
         Destroy(explo, exploTime);
         Explode(position, Vector2.up, exploRange);
         Explode(position, Vector2.down, exploRange);

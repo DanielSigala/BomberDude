@@ -9,6 +9,7 @@ public class dropHeart : MonoBehaviour
         if (other.gameObject.tag == "explo"){
             Destroy(gameObject);
             Vector2 position = transform.position;
+            position.x += .2f;
             GameObject dropGate = Instantiate(heart, position, Quaternion.identity);
         }
 }

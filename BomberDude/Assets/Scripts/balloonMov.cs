@@ -9,7 +9,7 @@ public class balloonMov : MonoBehaviour
     Rigidbody2D rb;
     GameObject pointsText;
     private pointsUpdate points;
-
+    public GameObject explS;
     void Awake(){
         rb = GetComponent<Rigidbody2D>();
         MoveTransform(1);
@@ -18,6 +18,7 @@ public class balloonMov : MonoBehaviour
     void Start(){
        pointsText = GameObject.Find("Points");
        points = pointsText.GetComponent<pointsUpdate>();
+       explS = GameObject.Find("enemydown");
     }
     public void MoveTransform(int x){
         Vector3 vel = Vector3.zero;
@@ -27,6 +28,7 @@ public class balloonMov : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other){
         if (other.gameObject.tag == "explo"){
+            explS.GetComponent<AudioSource>().Play();
             int pText = int.Parse(points.points.text);
             pText += 50;
             points.points.text = pText.ToString();
