@@ -8,6 +8,8 @@ TagManager:
   - hrt
   - bln
   - gate
+  - bp
+  - rp
   layers:
   - Default
   - TransparentFX

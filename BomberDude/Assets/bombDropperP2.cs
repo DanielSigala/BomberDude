@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bombDropper : MonoBehaviour
+public class bombDropperP2 : MonoBehaviour
 {
     public GameObject bomb;
     public float bombTime = 3f;
@@ -20,11 +20,11 @@ public class bombDropper : MonoBehaviour
     GameObject rangeText;
     private rangeCounter rangeCount;
    void Start(){
-       countText = GameObject.Find("Bombs");
+       countText = GameObject.Find("Bombs2");
        count = countText.GetComponent<bombCounter>();
        bmbS = GameObject.Find("BombSound");
 
-       rangeText = GameObject.Find("Range");
+       rangeText = GameObject.Find("Range2");
        rangeCount = rangeText.GetComponent<rangeCounter>();
     }
 
@@ -35,7 +35,7 @@ public class bombDropper : MonoBehaviour
     private void Update(){
         count.bombAmount.text = bombsLeft.ToString();
         rangeCount.rangeAmount.text = exploRange.ToString();
-        if (bombsLeft > 0 && Input.GetKeyDown(KeyCode.F)){
+        if (bombsLeft > 0 && Input.GetKeyDown(KeyCode.Keypad0)){
             StartCoroutine(dropBomb());
         }
     }

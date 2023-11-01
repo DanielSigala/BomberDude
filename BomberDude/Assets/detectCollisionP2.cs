@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class detectCollision : MonoBehaviour
+public class detectCollisionP2 : MonoBehaviour
 {
     public int hearts;
     GameObject heartText;
@@ -13,17 +13,17 @@ public class detectCollision : MonoBehaviour
     public GameObject hurtS;
 
     GameObject bomber;
-    private bombDropper bombD;
+    private bombDropperP2 bombD;
 
     public void Start(){
         hearts = 1;
-        heartText = GameObject.Find("Hearts");
+        heartText = GameObject.Find("Hearts2");
         heartC = heartText.GetComponent<heartCounter>();
         hS = GameObject.Find("HeartSound");
         hurtS = GameObject.Find("hurtSound");
 
-        bomber = GameObject.Find("bomber");
-        bombD =  bomber.GetComponent<bombDropper>();
+        bomber = GameObject.Find("bomberchick");
+        bombD =  bomber.GetComponent<bombDropperP2>();
     }
 
     public void OnTriggerEnter2D(Collider2D other){
