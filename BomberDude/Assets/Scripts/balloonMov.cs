@@ -31,11 +31,15 @@ public class balloonMov : MonoBehaviour
             explS.GetComponent<AudioSource>().Play();
             int pText = int.Parse(points.points.text);
             pText += 50;
-            points.points.text = pText.ToString();
+          
+            int additionalPoints = 50; 
+            ScoreManager.instance.UpdateScore(additionalPoints);
             Destroy(gameObject);
         }
         
         rb.velocity = -(rb.velocity);
 
     }
+
+    
 }

@@ -10,6 +10,10 @@ TagManager:
   - gate
   - bp
   - rp
+  - gate2
+  - gate3
+  - p1
+  - p2
   layers:
   - Default
   - TransparentFX

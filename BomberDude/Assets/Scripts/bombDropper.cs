@@ -32,12 +32,15 @@ public class bombDropper : MonoBehaviour
         bombsLeft = bombs;
     }
 
+    public void OnBomb(){
+        if (bombsLeft > 0 ) {
+            StartCoroutine(dropBomb());
+        }
+    }
+
     private void Update(){
         count.bombAmount.text = bombsLeft.ToString();
         rangeCount.rangeAmount.text = exploRange.ToString();
-        if (bombsLeft > 0 && Input.GetKeyDown(KeyCode.F)){
-            StartCoroutine(dropBomb());
-        }
     }
 
     private IEnumerator dropBomb(){

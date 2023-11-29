@@ -14,5 +14,20 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MAP1.unity
     guid: eb9cf1a4ae093744eaeb2c9fc2ea7caa
+  - enabled: 1
+    path: Assets/Scenes/MAP2.unity
+    guid: 171a397d7c0d3ff4d805e6549da6b8d6
+  - enabled: 1
+    path: Assets/Scenes/MAP3.unity
+    guid: 57cbb23a688fc644fb705c1c8d8dbed9
+  - enabled: 1
+    path: Assets/Scenes/MP.unity
+    guid: e0673243d6c95c842b33afef7d0f255e
+  - enabled: 1
+    path: Assets/Scenes/GOBM.unity
+    guid: 92758b0568331654c873d70745cea090
+  - enabled: 1
+    path: Assets/Scenes/GOBG.unity
+    guid: aa2a8cf1db70fa8439eab3331ebc90d2
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 99f1ee012c600684992f9290bdd136b7, type: 2}
