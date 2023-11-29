@@ -47,7 +47,7 @@ public class detectCollisionP2 : MonoBehaviour
             hearts--;
             heartC.heartCntr.text = hearts.ToString();
             if (hearts <= 0){
-                 Invoke("GameOver", 1f);
+                 Invoke("GameOver", 1.5f);
             }
         }
         if (other.gameObject.tag == "gate"){

@@ -34,7 +34,7 @@ public class detectCollision : MonoBehaviour
             hearts--;
             heartC.heartCntr.text = hearts.ToString();
             if (hearts <= 0){
-                ScoreManager.instance.NextLevelOrMainMenu("GOBM");
+                Invoke("GameOver", 1.5f);
             }
             }
         }
@@ -61,7 +61,7 @@ public class detectCollision : MonoBehaviour
             hearts--;
             heartC.heartCntr.text = hearts.ToString();
             if (hearts <= 0){
-                Invoke("GameOver", 1f);
+                Invoke("GameOver", 1.5f);
             }
         }
         if (other.gameObject.tag == "gate"){
