@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab90bb9dcd894c4b89a94e26035b143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bomb: {fileID: 6546729742035783942, guid: 804426732ffeb6d4ea634f95b72b087a, type: 3}
+  bombPrefab: {fileID: 6546729742035783942, guid: 804426732ffeb6d4ea634f95b72b087a, type: 3}
   bombTime: 3
   bombs: 1
   bombsLeft: 0
@@ -185,6 +185,7 @@ MonoBehaviour:
   exploTime: 1
   exploRange: 1
   bmbS: {fileID: 3807108795251909483, guid: 0b8ea66d905752e4b9af98d78922daf2, type: 3}
+  poolSize: 10
 --- !u!114 &5000767530069416243
 MonoBehaviour:
   m_ObjectHideFlags: 0

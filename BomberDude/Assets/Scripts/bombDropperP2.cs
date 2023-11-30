@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class bombDropperP2 : MonoBehaviour
 {
-    public GameObject bomb;
+    public GameObject bombPrefab;
     public float bombTime = 3f;
     public int bombs = 1;
     public int bombsLeft;
@@ -19,34 +19,62 @@ public class bombDropperP2 : MonoBehaviour
    
     GameObject rangeText;
     private rangeCounter rangeCount;
-   void Start(){
-       countText = GameObject.Find("Bombs2");
-       count = countText.GetComponent<bombCounter>();
-       bmbS = GameObject.Find("BombSound");
 
-       rangeText = GameObject.Find("Range2");
-       rangeCount = rangeText.GetComponent<rangeCounter>();
-    }
+    // Object pool variables
+    public int poolSize = 10; // Number of bombs to pre-instantiate
+    private List<GameObject> bombPool = new List<GameObject>();
 
-   private void OnEnable(){
-        bombsLeft = bombs;
-    }
+    void Start()
+    {
+        countText = GameObject.Find("Bombs2");
+        count = countText.GetComponent<bombCounter>();
+        bmbS = GameObject.Find("BombSound");
 
-    public void OnBomb(){
-        if (bombsLeft > 0 ) {
-            StartCoroutine(dropBomb());
+        rangeText = GameObject.Find("Range2");
+        rangeCount = rangeText.GetComponent<rangeCounter>();
+
+        // Pre-instantiate bombs for the object pool
+        for (int i = 0; i < poolSize; i++)
+        {
+            GameObject bomb = Instantiate(bombPrefab);
+            bomb.SetActive(false);
+            bombPool.Add(bomb);
         }
     }
 
-    private void Update(){
+    private void OnEnable()
+    {
+        bombsLeft = bombs;
+    }
+
+    public void OnBomb()
+    {
+        if (bombsLeft > 0)
+        {
+            StartCoroutine(DropBomb());
+        }
+    }
+
+    private void Update()
+    {
         count.bombAmount.text = bombsLeft.ToString();
         rangeCount.rangeAmount.text = exploRange.ToString();
     }
 
-    private IEnumerator dropBomb(){
+    private IEnumerator DropBomb()
+    {
         Vector2 position = transform.position;
         position.y += .3f;
-        GameObject drop = Instantiate(bomb, position, Quaternion.identity);
+        GameObject drop = GetPooledBomb();
+        drop.transform.position = position;
+        drop.SetActive(true);
+
+        Collider2D bombCollider = drop.GetComponent<Collider2D>();
+        if (bombCollider != null)
+        {
+            bombCollider.isTrigger = true; // Set the trigger status to true upon bomb spawn
+        }
+
         bombsLeft--;
         count.bombAmount.text = bombsLeft.ToString();
         yield return new WaitForSeconds(bombTime);
@@ -61,9 +89,22 @@ public class bombDropperP2 : MonoBehaviour
         Explode(position, Vector2.down, exploRange);
         Explode(position, Vector2.right, exploRange);
         Explode(position, Vector2.left, exploRange);
-        Destroy(drop);
+
+        drop.SetActive(false); // Return the bomb to the object pool
         bombsLeft++;
         count.bombAmount.text = bombsLeft.ToString();
+    }
+
+    private GameObject GetPooledBomb()
+    {
+        foreach (GameObject bomb in bombPool)
+        {
+            if (!bomb.activeInHierarchy)
+            {
+                return bomb;
+            }
+        }
+        return null;
     }
 
     private void Explode(Vector2 position, Vector2 direction, int range){
@@ -83,6 +124,5 @@ public class bombDropperP2 : MonoBehaviour
          if(other.gameObject.layer == LayerMask.NameToLayer("Bomb")){
              other.isTrigger = false;
          }
-    }
-    
+    }   
 }

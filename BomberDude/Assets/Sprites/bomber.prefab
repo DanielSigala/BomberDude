@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8416705734762759893}
   - component: {fileID: -8339602668578961590}
   - component: {fileID: 2287594889291147960}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bomber
   m_TagString: p1
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25dbaa6aeb66fc84f96beffe6691da4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bomb: {fileID: 6546729742035783942, guid: 804426732ffeb6d4ea634f95b72b087a, type: 3}
+  bombPrefab: {fileID: 6546729742035783942, guid: 804426732ffeb6d4ea634f95b72b087a, type: 3}
   bombTime: 3
   bombs: 1
   bombsLeft: 0
@@ -230,6 +230,7 @@ MonoBehaviour:
   exploTime: 1
   exploRange: 1
   bmbS: {fileID: 3807108795251909483, guid: 0b8ea66d905752e4b9af98d78922daf2, type: 3}
+  poolSize: 10
 --- !u!114 &-8339602668578961590
 MonoBehaviour:
   m_ObjectHideFlags: 0
